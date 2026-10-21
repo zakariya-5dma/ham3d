@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="fr"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex,nofollow">
+<title>HAM3D · Administration</title>
+<style>
+:root{color-scheme:dark;--bg:#0a0f1c;--card:#121a2e;--ink:#eef3ff;--mut:#9fb0d0;--blue:#2f7bff;--line:#24304d}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 system-ui,sans-serif}
+header{display:flex;align-items:center;gap:12px;flex-wrap:wrap;padding:14px 20px;border-bottom:1px solid var(--line)}
+header b{font-size:1.3rem;margin-inline-end:auto}header b span{color:var(--blue)}header a{color:var(--mut)}
+main{max-width:920px;margin:0 auto;padding:24px 20px}h1,h2{margin:0 0 14px}
+button{font:inherit;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:8px;padding:8px 14px;cursor:pointer}
+button.p{background:var(--blue);border-color:var(--blue);color:#fff}button.dn{color:#ff8a8a}button:disabled{opacity:.5;cursor:wait}
+input,select,textarea{width:100%;font:inherit;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:10px}
+label{display:grid;gap:5px;margin-bottom:12px;font-size:.92rem;color:var(--mut)}label.ck{display:flex;align-items:center;gap:8px}label.ck input{width:auto}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}@media(max-width:600px){.row2{grid-template-columns:1fr}}
+#lg{max-width:380px;margin:50px auto}.bar{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
+.it{display:flex;align-items:center;gap:12px;flex-wrap:wrap;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px;margin-bottom:10px}
+.it img{width:60px;height:60px;object-fit:cover;border-radius:8px;background:var(--bg)}.tx{flex:1;min-width:170px}.tx small{display:block;color:var(--mut)}.it select{width:auto}
+#msg{min-height:1.5em;color:#7ee0a0}#msg.bad{color:#ff8a8a}
+dialog{background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:14px;width:min(700px,calc(100% - 24px));max-height:92vh;overflow:auto;padding:22px}dialog::backdrop{background:rgba(0,0,0,.7)}
+.act{display:flex;gap:10px;justify-content:flex-end;margin-top:8px}
+#ph{display:flex;gap:10px;flex-wrap:wrap;margin:6px 0 10px}.pt{width:104px;background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:6px;text-align:center}
+.pt img{width:100%;height:80px;object-fit:cover;border-radius:6px;display:block}.pt div{display:flex;gap:2px;justify-content:center;margin-top:4px}.pt button{padding:2px 8px}.pt small{color:var(--blue)}
+</style></head><body>
+<header><b>HAM<span>3D</span> · Administration</b><a href="/" target="_blank" rel="noopener">Voir le site</a><button id="out" type="button" hidden>Déconnexion</button></header>
+<main><p id="msg" role="status"></p>
+<form id="lg" hidden><h1>Connexion administrateur</h1>
+<label>E-mail<input id="em" type="email" required autocomplete="username"></label>
+<label>Mot de passe<input id="pw" type="password" required autocomplete="current-password"></label>
+<button class="p" type="submit">Se connecter</button></form>
+<section id="ap" hidden><div class="bar"><h1>Produits</h1><button class="p" id="add" type="button">+ Ajouter un produit</button></div><div id="ls"></div></section></main>
+<dialog id="dg"><form id="ef"><h2 id="dt"></h2>
+<div class="row2"><label>Catégorie<select id="f_cat"></select></label><label>Disponibilité du stock<select id="f_stock"></select></label></div>
+<label>Nom (français) *<input id="f_nfr" required maxlength="150"></label>
+<div class="row2"><label>Nom (anglais, facultatif)<input id="f_nen" maxlength="150"></label><label>الاسم (عربي، اختياري)<input id="f_nar" dir="rtl" maxlength="150"></label></div>
+<label>Description (français)<textarea id="f_dfr" rows="3" maxlength="2000"></textarea></label>
+<div class="row2"><label>Description (anglais)<textarea id="f_den" rows="3" maxlength="2000"></textarea></label><label>الوصف (عربي)<textarea id="f_dar" dir="rtl" rows="3" maxlength="2000"></textarea></label></div>
+<div class="row2"><label>Prix en MAD (vide = sur devis)<input id="f_price" type="number" min="0" step="0.01"></label><label class="ck"><input id="f_from" type="checkbox"> Afficher « À partir de »</label></div>
+<div class="row2"><label>Matériau (facultatif)<input id="f_mat" maxlength="120"></label><label>Délai (facultatif, ex. 2 à 3 jours)<input id="f_lead" maxlength="120"></label></div>
+<label>Ordre d’affichage (petit nombre = en premier)<input id="f_sort" type="number" step="1" value="0"></label>
+<label>Photos (jusqu’à 8, la première est la principale)<input id="fi" type="file" accept="image/jpeg,image/png,image/webp" multiple></label>
+<div id="ph"></div><p id="up" style="color:var(--mut);margin:0 0 8px"></p>
+<div class="act"><button type="button" id="cc">Annuler</button><button class="p" id="sv" type="submit">Enregistrer</button></div></form></dialog>
+<script src="/admin/admin.js"></script></body></html>

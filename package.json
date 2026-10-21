@@ -1,0 +1,5 @@
+{
+  "name": "ham3d",
+  "private": true,
+  "description": "Site HAM3D + administration (Vercel + Supabase)"
+}
